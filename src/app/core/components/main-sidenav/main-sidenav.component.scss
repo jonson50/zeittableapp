@@ -1,0 +1,56 @@
+.man-nav-link {
+ @apply flex items-center gap-x-3 py-2 px-2.5 h-11 hover:bg-blue-600 text-sm text-white font-medium rounded-lg
+}
+
+.man-nav-link.active {
+  @apply bg-blue-600
+}
+
+::ng-deep .mat-mdc-nav-list.mdc-list {
+  @apply p-4 w-full flex flex-col flex-wrap space-y-1 ;
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel {
+  @apply bg-blue-700 text-sm text-white
+}
+
+::ng-deep .dark .mat-accordion .mat-expansion-panel {
+  @apply bg-blue-800
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+::ng-deep .mat-expansion-panel .mat-expansion-panel-header {
+  @apply pl-0 pr-4 h-11
+}
+
+::ng-deep .mat-expansion-panel .mat-expansion-panel-header div {
+    @apply flex items-center gap-x-3 py-2 px-2.5 text-sm text-white font-medium
+}
+
+::ng-deep .mat-expansion-panel .mat-expansion-panel-header.mat-expanded {
+    @apply h-11
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover,
+::ng-deep .mat-accordion .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+  @apply bg-blue-600 text-white rounded-lg
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel-body {
+  @apply py-1 pl-0 pr-0
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel-body .man-nav-link {
+  @apply pr-2.5 pl-10
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel-body .mat-accordion .mat-expansion-panel-header {
+  @apply pr-4 pl-8
+}
+
+::ng-deep .mat-accordion .mat-expansion-panel-body .mat-accordion .mat-expansion-panel-body .man-nav-link {
+  @apply pl-16
+}

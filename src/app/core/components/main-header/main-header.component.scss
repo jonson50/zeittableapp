@@ -1,0 +1,10 @@
+::ng-deep .avatar-icon.mdc-icon-button .mat-mdc-icon-button svg, .mat-mdc-icon-button img {
+  width: unset;
+  height: unset;
+}
+
+::ng-deep .avatar-icon.mat-mdc-icon-button.mat-mdc-button-base {
+  padding: unset;
+  width: 35px;
+  height: 35px;
+}

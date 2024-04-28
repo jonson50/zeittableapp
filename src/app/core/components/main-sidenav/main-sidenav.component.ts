@@ -112,30 +112,8 @@ export class MainSidenavComponent {
             label: 'Sign in',
             icon: null,
             active: false,
-            url: '',
-            children: [
-              {
-                label: 'Login 1',
-                icon: 'star',
-                active: false,
-                url: '',
-                children: [],
-              },
-              {
-                label: 'Login 2',
-                icon: 'star',
-                active: false,
-                url: '',
-                children: [],
-              },
-              {
-                label: 'Login 2',
-                icon: 'star',
-                active: false,
-                url: '',
-                children: [],
-              },
-            ]
+            url: '/auth',
+            children: []
           },
           {
             label: 'Sign out',

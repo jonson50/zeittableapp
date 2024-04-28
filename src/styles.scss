@@ -2,10 +2,6 @@
 @use '@angular/material' as mat;
 @use 'assets/palette' as palette;
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
 @include mat.core();
 // Define light theme colors
 $zeittable-primary: mat.define-palette(palette.$primary-pat);
@@ -17,7 +13,7 @@ $zeittable-warn: mat.define-palette(palette.$warn-pat);
 //$zeittable-warn-dark: mat.define-palette(mat.$red-palette);
 
 $zeittable-typography: mat.define-typography-config(
-  $font-family: theme("fontFamily.sans")
+  $font-family: Inter
 );
 
 $zeittable-theme: mat.define-light-theme((
@@ -43,16 +39,12 @@ $zeittable-theme-dark: mat.define-dark-theme((
 @include mat.all-component-themes($zeittable-theme);
 @include mat.all-component-typographies($zeittable-theme);
 
-/* * {
-  @apply transition-colors;
-} */
-
 html, body {
-  @apply h-full;
+  height: 100%
 }
 body {
-  @apply m-0;
-  @apply font-sans;
+  margin: 0px;
+  font-family: Inter, "Helvetica Neue", sans-serif;
 }
 
 .dark {

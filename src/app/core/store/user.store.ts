@@ -8,18 +8,18 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
 import { pipe, switchMap, tap } from "rxjs";
 
-type AuthState = {
+type UserState = {
   user: any;
   isLoading: boolean;
 };
 
-const initialState: AuthState = {
+const initialState: UserState = {
   user: '',
   isLoading: false
 };
 
 
-export const AuthStore = signalStore(
+export const UserStore = signalStore(
   { providedIn: 'root' }, // => make it a global store
   withState(initialState),
   withMethods((

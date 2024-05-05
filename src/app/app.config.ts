@@ -4,13 +4,11 @@ import { PreloadAllModules, provideRouter, withComponentInputBinding, withHashLo
 import { APP_ROUTES } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MockApiModule } from './core/mock-api/mock-api.module';
-import { mockApiServices } from './shared/mock-services';
-import { provideHttpClient } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    importProvidersFrom(MatSnackBarModule),
     provideRouter(APP_ROUTES,
       withHashLocation(),
       withComponentInputBinding(),

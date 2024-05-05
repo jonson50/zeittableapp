@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/components/main-layout/main-layout.component';
+import { authCanActivateGuard } from './core/guards/auth-can-activate.guard';
+import { authCanActivateChildGuard } from './core/guards/auth-can-activate-child.guard';
 
 export const APP_ROUTES: Routes = [
   //{ path: '', pathMatch: 'full', redirectTo: 'dashboards/finance' },
@@ -21,6 +23,8 @@ export const APP_ROUTES: Routes = [
 
   {
     path: '',
+    canActivate: [authCanActivateGuard],
+    canActivateChild: [authCanActivateChildGuard],
     loadComponent: () => import('./core/components/main-layout/main-layout.component').then(m => m.MainLayoutComponent),
     children: [
       {

@@ -1,7 +1,4 @@
 {
-  "css.customData": [".vscode/tailwind.json"],
-  "scss.lint.unknownAtRules": "ignore",
-  "editor.quickSuggestions": {
-    "strings": "on"
-  }
+  "editor.tabSize": 3,
+  "editor.fontFamily": "JetBrains Mono"
 }

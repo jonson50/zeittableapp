@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, effect, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from '@app/core/services/auth.service';
+import { AuthStore } from '../store/auth.store';
+import { getState } from '@ngrx/signals';
 
 @Component({
   selector: 'app-login',
@@ -26,14 +29,24 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class LoginComponent {
   private _formBuilder = inject(FormBuilder);
-  form: FormGroup = new FormGroup({
+  private _authStore = inject(AuthStore);
+
+  public form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
 
+  public OnInit() {
+    effect(() => {
+      // 👇 The effect will be re-executed whenever the state changes.
+      const state = getState(this._authStore);
+      console.log('books state changed', state);
+    });
+  }
+
   submit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      this._authStore.login(this.form.value);
     }
   }
   @Input()

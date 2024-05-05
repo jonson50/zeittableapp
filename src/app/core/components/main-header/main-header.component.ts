@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DOCUMENT } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthService } from '@app/core/services/auth.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 export class MainHeaderComponent {
   constructor(@Inject(DOCUMENT) private document: Document) { }
   private renderer = inject(Renderer2);
+  private _auth = inject(AuthService);
   public isDarkMode = false;
 
   @Output()
@@ -28,5 +30,9 @@ export class MainHeaderComponent {
     this.isDarkMode = !this.isDarkMode;
     if (this.isDarkMode) this.renderer.addClass(this.document.body, 'dark')
     else this.renderer.removeClass(this.document.body, 'dark')
+  }
+
+  clearStore() {
+    this._auth.logout();
   }
 }

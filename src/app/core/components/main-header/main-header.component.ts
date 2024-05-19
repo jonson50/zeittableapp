@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DOCUMENT } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AuthService } from '@app/core/services/auth.service';
+import { AuthService } from '@app/shared/parse/services/auth.service';
 
 
 @Component({

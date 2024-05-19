@@ -36,7 +36,7 @@
         </mat-expansion-panel>
       </mat-accordion>
     } @else {
-      <a mat-list-item href="#">
+      <a mat-list-item [routerLink]="menu.url">
         @if (menu.icon) {
           <mat-icon fontSet="material-icons-outlined">{{menu.icon}}</mat-icon>
         }

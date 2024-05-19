@@ -12,8 +12,6 @@ export class AuthService {
   constructor() {
     Parse.initialize(environment.APP_ID, environment.JS_KEY);
     Parse.serverURL = environment.apiURL;
-    let localData = localStorage.getItem(`Parse/${environment.APP_ID}/currentUser`);
-    console.log(localData)
   }
 
   public login(user: string, password: string) {

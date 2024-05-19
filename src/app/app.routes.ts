@@ -28,12 +28,16 @@ export const APP_ROUTES: Routes = [
     loadComponent: () => import('./core/components/main-layout/main-layout.component').then(m => m.MainLayoutComponent),
     children: [
       {
-        path: 'dashboards',
-        loadChildren: () => import('./modules/dashboards/dashboards.routes').then(m => m.DASHBOARD_ROUTES)
+        path: 'dashboard',
+        loadComponent: () => import('./modules/dashboard/dashboard.component').then(c => c.DashboardComponent)
       },
       {
-        path: 'ecommerce',
-        loadChildren: () => import('./modules/ecommerce/ecommerce.routes').then(m => m.ECOMMERCE_ROUTES)
+        path: 'time-entry',
+        loadComponent: () => import('./modules/time-entry/time-entry.component').then(c => c.TimeEntryComponent)
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./modules/admin/admin.routes').then(r => r.ADMIN_ROUTES)
       }
     ]
   },

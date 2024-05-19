@@ -5,13 +5,13 @@ import { MainSidenavComponent } from '../main-sidenav/main-sidenav.component';
 import { MainHeaderComponent } from '../main-header/main-header.component';
 import { BreakpointObserver, LayoutModule } from '@angular/cdk/layout';
 import { RouterOutlet } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface NavConfig {
   mode: MatDrawerMode;
   hasBackdrop: boolean;
- }
+}
 
 @Component({
   selector: 'app-main-layout',
@@ -31,7 +31,7 @@ interface NavConfig {
 })
 export class MainLayoutComponent {
   private observer = inject(BreakpointObserver);
-  private readonly destroyRef = inject(DestroyRef)
+  private readonly destroyRef = inject(DestroyRef);
 
   public navConf: NavConfig = {
     hasBackdrop: false,
@@ -48,20 +48,20 @@ export class MainLayoutComponent {
 
   ngAfterViewInit(): void {
     this.observer.observe(['(max-width: 800px)'])
-    .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe((screenSize) => {
-      if(screenSize.matches) {
-        this.isMobile = true;
-        this.sidenav.close();
-      } else {
-        this.isMobile = false;
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-      }
-    });
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((screenSize) => {
+        if (screenSize.matches) {
+          this.isMobile = true;
+          this.sidenav.close();
+        } else {
+          this.isMobile = false;
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
   }
 
-  toggleSideNav(){
+  toggleSideNav() {
     this.sidenav.toggle();
   }
 }

@@ -38,151 +38,49 @@ export class MainSidenavComponent {
   ngOnInit() {
     const menu = [
       {
-        label: 'Dashboards',
+        label: 'Dashboard',
         icon: 'dashboard',
-        active: false,
-        url: '',
-        children: [
-          {
-            label: 'Analytics',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/dashboards/analytics'
-          },
-          {
-            label: 'Project',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/dashboards/project'
-          },
-          {
-            label: 'Finance',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/dashboards/finance'
-          }
-        ]
-      },
-      {
-        label: 'E-Commerce',
-        icon: 'storefront',
-        children: [
-          {
-            label: 'Inventory',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/ecommerce/inventory'
-          },
-          {
-            label: 'Invoices',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/ecommerce/invoices'
-          },
-          {
-            label: 'Checkout Form',
-            icon: null,
-            children: [],
-            active: false,
-            url: '/ecommerce/checkout'
-          }
-        ],
-        active: false,
-        url: ''
-      },
-      {
-        label: 'Menu1',
-        icon: 'star',
         children: [],
         active: false,
-        url: ''
+        url: '/dashboard'
       },
       {
-        label: 'Pages',
-        icon: 'storefront',
+        label: 'Time Entry',
+        icon: 'calendar_month',
+        children: [],
+        active: false,
+        url: '/time-entry'
+      },
+      {
+        label: 'Admin',
+        icon: 'shield_person',
         active: false,
         url: '',
         children: [
           {
-            label: 'Sign in',
+            label: 'Employees',
             icon: null,
+            children: [],
             active: false,
-            url: '/auth',
-            children: []
+            url: '/admin/employees'
           },
-          {
-            label: 'Sign out',
-            icon: null,
-            active: false,
-            url: '',
-            children: [
-              {
-                label: 'Sign out 1',
-                icon: 'star',
-                children: [],
-                active: false,
-                url: ''
-              },
-              {
-                label: 'Sign out 2',
-                icon: 'star',
-                children: [],
-                active: false,
-                url: ''
-              },
-            ]
-          },
-          {
-            label: 'Forgot Password',
-            icon: null,
-            active: false,
-            url: '',
-            children: [
-              {
-                label: 'Forgot 1',
-                icon: 'star',
-                children: [],
-                active: false,
-                url: ''
-              },
-              {
-                label: 'Forgot 2',
-                icon: 'star',
-                children: [],
-                active: false,
-                url: ''
-              },
-            ]
-          },
-          {
-            label: 'Maintenance',
-            icon: null,
-            active: false,
-            url: '/pages/maintenance',
-            children: []
-          }
-        ],
+        ]
       },
+
     ];
-    menu.map(item => this.checkUrlInsideChildre(item));
+    menu.forEach(item => this.checkUrlInsideChildre(item));
     this.menuList = [...menu];
     this._router.events
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         filter(event => event instanceof NavigationEnd)
       )
-      .subscribe(event => {
-        menu.map(item => this.checkUrlInsideChildre(item));
-      })
+      .subscribe(() => menu.map(item => this.checkUrlInsideChildre(item)))
   }
 
   checkUrlInsideChildre(menu: MenuItem) {
     const currentUrl = this._router.url;
+
     const children = menu.children.map(childMenu => {
       if (childMenu.children.length) { this.checkUrlInsideChildre(childMenu) }
       childMenu.active = childMenu.url.includes(currentUrl)
